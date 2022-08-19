@@ -40,7 +40,7 @@ def show_artist(artist_id):
         return render_template('errors/404.html')
 
     past_shows_query = db.session.query(Shows).join(Venue).filter(
-        Shows.artist_id == artist_id).filter(Shows.start_time > datetime.now()).all()
+        Shows.artist_id == artist_id).filter(Shows.start_time < datetime.now()).all()
     past_shows = []
 
     for show in past_shows_query:
